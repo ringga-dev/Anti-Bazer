@@ -1,20 +1,34 @@
 # Dokumentasi Anti Bazer
 
-Dokumen ini mengumpulkan rancangan aplikasi Anti Bazer berbasis Bun dan TypeScript. Aplikasi menyediakan CLI dan HTTP API untuk menganalisis konten yang tersedia dari platform, lalu menyajikan indikator dan bukti untuk ditinjau manusia.
+Dokumentasi ini mencakup cara menggunakan dan mengembangkan aplikasi, status kemampuan saat ini, integrasi API resmi, serta prinsip penggunaan yang bertanggung jawab. Anti Bazer adalah proyek Bun/TypeScript dengan CLI dan HTTP API untuk mengumpulkan sampel konten yang diizinkan dan menyajikan sinyal yang dapat ditinjau manusia.
 
-## Isi dokumen
+> **Penting:** aplikasi tidak menetapkan bahwa seseorang adalah buzzer, akun palsu, atau orang asli. Analisis akun individual yang berinteraksi belum diimplementasikan. Lihat [status fitur dan batasan](./status-fitur.md) sebelum menyimpulkan apa pun dari hasil.
 
-- [Tujuan dan ruang lingkup](./tujuan-dan-ruang-lingkup.md): masalah yang ingin dibantu, sasaran, dan hal yang bukan tujuan aplikasi.
-- [Rancangan MVP dan arsitektur](./rancangan-mvp.md): teknologi dan alur penggunaan yang disarankan.
-- [Rencana kerja dan sasaran](./rencana-kerja.md): tahapan implementasi beserta kriteria selesai.
-- [Struktur proyek](./struktur-proyek.md): struktur source set Bun/TypeScript dengan fitur yang dikelompokkan tanpa pohon folder duplikat.
-- [Setup API platform](./setup-platform.md): konfigurasi credential dan batas integrasi API resmi.
-- [Referensi API dan CLI](./api-cli.md): alur input akun/postingan sesuai tujuan produk, bentuk hasil saat ini vs tujuan lanjutan, endpoint, request/response, error HTTP, dan perintah terminal.
-- [Indikator analisis](./indikator-analisis.md): sinyal yang dapat diperiksa dan cara menyampaikan hasilnya.
-- [Batasan, risiko, dan mitigasi](./batasan-dan-risiko.md): kendala API, akurasi, privasi, biaya, dan risiko salah tafsir.
+## Mulai dari sini
 
-## Prinsip utama
+| Tujuan | Dokumen |
+|---|---|
+| Memahami visi, misi, dan batas tujuan produk | [Tujuan dan ruang lingkup](./tujuan-dan-ruang-lingkup.md) |
+| Menjalankan aplikasi dari source | [README proyek](../README.md) |
+| Mengembangkan atau menambah provider/analisis | [Panduan developer](./developer-guide.md) |
+| Mengetahui fitur, kelebihan, kekurangan, dan batas provider | [Status fitur dan batasan](./status-fitur.md) |
+| Menggunakan CLI atau HTTP API | [Referensi API dan CLI](./api-cli.md) |
+| Mengatur credential API dan model AI | [Setup platform](./setup-platform.md) |
+| Menyiapkan versi dan rilis GitHub | [Proses rilis](./release-process.md) |
 
-Analisis menghasilkan indikator perilaku dan pola koordinasi, bukan kepastian mengenai identitas atau motif seseorang. Hasil perlu menyertakan bukti, cakupan data, tingkat keyakinan, dan ketidakpastian.
+## Referensi teknis dan produk
 
-Alur MVP: pengguna memasukkan URL akun atau postingan, lalu aplikasi mengumpulkan data yang tersedia melalui API resmi dan menganalisis konten. Laporan menampilkan indikator koordinasi, penjelasan, cakupan data, serta opini komentar secara agregat. Hasil bukan vonis identitas atau motif; jenis interaksi yang tersedia berbeda menurut platform dan izin.
+- [Rancangan MVP dan arsitektur](./rancangan-mvp.md): teknologi dan alur implementasi.
+- [Rencana kerja](./rencana-kerja.md): tahapan pengembangan berikutnya; sasaran roadmap belum tentu telah tersedia.
+- [Struktur proyek](./struktur-proyek.md): tata letak source dan tanggung jawab modul.
+- [Indikator analisis](./indikator-analisis.md): sinyal, penyajian skor, dan evaluasi.
+- [Batasan, risiko, dan mitigasi](./batasan-dan-risiko.md): akses API, kualitas, privasi, biaya, dan risiko salah tafsir.
+- [Proses rilis](./release-process.md): Semantic Versioning, tag, pemeriksaan CI, dan GitHub Release.
+- [Kontribusi](../CONTRIBUTING.md): panduan pull request dan standar perubahan.
+- [Kebijakan keamanan](../SECURITY.md): pelaporan kerentanan secara privat.
+- [Kode etik](../CODE_OF_CONDUCT.md): standar partisipasi komunitas.
+- [Lisensi MIT](../LICENSE): ketentuan lisensi source proyek.
+
+## Prinsip dokumentasi
+
+Dokumentasi membedakan fitur yang aktif, fitur yang direncanakan, dan hal yang tidak dapat disimpulkan. Integrasi API tunduk pada izin, kuota, dan kebijakan masing-masing platform. AI opsional bukan pengganti bukti atau peninjauan manusia.

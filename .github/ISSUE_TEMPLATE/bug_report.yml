@@ -1,0 +1,42 @@
+name: Bug report
+description: Report a reproducible problem in the application or documentation.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include API keys, access tokens, private user data, or private account content. Report security vulnerabilities privately using SECURITY.md."
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Output of `bun run antibazer --version`, release tag, or commit hash.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Bun version, and provider involved (if relevant).
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Safe reproduction steps
+      description: Use synthetic or public test data. Redact identifiers and secrets.
+    validations:
+      required: true

@@ -1,13 +1,28 @@
 {
   "name": "anti-bazer",
+  "version": "0.1.0",
+  "description": "Explainable social-content research using authorized platform APIs.",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ringga-dev/Anti-Bazer.git"
+  },
+  "homepage": "https://github.com/ringga-dev/Anti-Bazer#readme",
+  "bugs": {
+    "url": "https://github.com/ringga-dev/Anti-Bazer/issues"
+  },
+  "engines": {
+    "bun": ">=1.4.0"
+  },
   "type": "module",
   "scripts": {
     "start": "bun run src/main/ts/Application.ts",
     "antibazer": "bun run src/main/ts/Application.ts",
     "api": "bun run src/main/ts/Application.ts api",
     "test": "bun test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:release": "bun run scripts/check-release-version.ts"
   },
   "bin": {
     "antibazer": "src/main/ts/Application.ts"

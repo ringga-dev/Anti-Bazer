@@ -6,6 +6,7 @@ import { parseScanEntries, scanInputSchema } from "../features/scan/input";
 import { scanAndReport } from "../features/scan/run";
 import { platformIds, type PlatformId } from "../platforms/types";
 import { getMissingCredentials, getPlatform, platforms } from "../platforms/registry";
+import packageMetadata from "../../../../package.json";
 
 export async function runCli(): Promise<void> {
   const program = new Command();
@@ -13,7 +14,7 @@ export async function runCli(): Promise<void> {
   program
     .name("antibazer")
     .description("Analyze account and interaction signals using social media APIs.")
-    .version("0.1.0")
+    .version(packageMetadata.version)
     .argument("[entries...]", "Target URL as target=<URL>, akun=<URL>, or post=<URL>")
     .option("--platform <platform>", "Platform: auto, x, instagram, tiktok, youtube, or facebook")
     .option("--target <url>", "Account or post URL")

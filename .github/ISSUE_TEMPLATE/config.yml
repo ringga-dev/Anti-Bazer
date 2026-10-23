@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/ringga-dev/Anti-Bazer/security/advisories/new
+    about: Please report security issues privately; do not create a public issue.
+  - name: Read the documentation
+    url: https://github.com/ringga-dev/Anti-Bazer/tree/main/docs
+    about: Check setup, API, feature status, and developer documentation first.

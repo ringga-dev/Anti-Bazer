@@ -1,45 +1,59 @@
-# Tujuan dan Ruang Lingkup
+# Visi, Misi, Tujuan, dan Ruang Lingkup
 
-## Tujuan produk
+## Visi
 
-Anti Bazer membantu pengguna memeriksa pola aktivitas akun dan konten yang mungkin menunjukkan otomatisasi atau koordinasi promosi. Aplikasi merangkum sinyal yang ditemukan agar pengguna dapat melakukan peninjauan lanjutan.
+Mendorong riset percakapan publik yang lebih transparan dan dapat ditinjau dengan menjelaskan data apa yang tersedia, pola apa yang teramati, bagaimana hasil dibuat, dan bagian mana yang belum diketahui.
 
-Sasaran awal:
+## Misi
 
-1. Menganalisis data akun, unggahan, dan komentar yang diperoleh secara sah.
-2. Menemukan pola aktivitas tidak biasa dan kemiripan konten antar akun.
-3. Menampilkan alasan di balik setiap indikator, bukan hanya skor.
-4. Menyediakan laporan yang menyatakan cakupan data dan ketidakpastian.
-5. Memulai pengumpulan otomatis dari username akun atau URL/ID postingan, lalu menemukan akun yang berinteraksi melalui data yang tersedia dari API platform.
+1. Membantu peneliti meninjau sampel konten dan komentar yang diperoleh secara sah melalui API resmi atau akses yang telah diotorisasi.
+2. Menyajikan indikator beserta bukti dan penjelasannya, bukan label yang tidak dapat diverifikasi.
+3. Menyatakan cakupan, data yang hilang, ketidakpastian, dan batas akses platform secara eksplisit.
+4. Menyediakan fondasi modular yang terdokumentasi agar pengembang dapat menambah provider dan kemampuan dengan aman.
+5. Meminimalkan pengumpulan data dan mempertahankan peninjauan manusia untuk interpretasi yang berdampak.
 
-## Istilah dan batas interpretasi
+## Tujuan aplikasi
 
-- **Akun mencurigakan** adalah label kerja untuk akun yang menunjukkan satu atau lebih pola yang perlu diperiksa. Label ini bukan bukti bahwa akun palsu.
-- **Pola koordinasi** berarti sejumlah akun memiliki kemiripan atau sinkronisasi aktivitas yang layak ditinjau. Pola itu sendiri tidak membuktikan adanya hubungan, kendali bersama, atau motif.
-- **AI** dapat membantu mengelompokkan atau merangkum bukti, tetapi tidak menjadi satu-satunya dasar penilaian.
-- **Orang asli atau buzzer** bukan klasifikasi yang dapat dipastikan hanya dari unggahan dan komentar. Aplikasi tidak boleh menyajikan dugaan tersebut sebagai fakta.
+Anti Bazer membantu pengguna mengumpulkan sampel konten media sosial dan meninjau pola yang mungkin relevan, misalnya teks berulang atau konsentrasi waktu komentar. Aplikasi juga dapat merangkum opini komentar secara agregat. Tujuan ini adalah **dukungan riset dan triase**, bukan verifikasi identitas atau penentuan motif.
 
-## Dalam ruang lingkup MVP
+### Istilah yang digunakan
 
-- Aplikasi terminal (CLI) menggunakan Bun dan TypeScript.
-- Pengumpulan otomatis melalui API resmi dari satu platform yang dipilih.
-- Input awal berupa username akun atau URL/ID postingan.
-- Penemuan akun yang berinteraksi melalui jenis interaksi yang dapat diakses API, seperti balasan, komentar, mention, repost, atau like jika tersedia.
-- Pemeriksaan akun yang ditemukan dan perluasan jaringan interaksi dengan batas kedalaman, jumlah akun, waktu, dan kuota yang jelas.
-- Sinkronisasi terjadwal atau mekanisme streaming/webhook jika disediakan dan diizinkan platform.
-- Validasi data yang diterima dari API.
-- Analisis aturan dan statistik yang dapat dijelaskan.
-- Laporan per akun dan pola antar akun dengan bukti pendukung.
-- Penyimpanan lokal seperlunya, dengan perhatian pada minimisasi dan penghapusan data.
+- **Indikator pola**: sinyal dari sampel yang layak ditinjau lebih lanjut, bukan bukti final.
+- **Sinyal koordinasi**: nilai heuristik tentang kekuatan pola tertentu; bukan probabilitas bahwa akun terkoordinasi.
+- **Akun mencurigakan**: sebutan sementara untuk pola yang memerlukan pemeriksaan manusia, bukan bukti akun palsu.
+- **AI**: alat bantu klasifikasi atau peringkasan teks; bukan sumber kebenaran tunggal.
 
-## Di luar ruang lingkup MVP
+## Kemampuan yang tersedia saat ini
 
-- Menyimpulkan identitas dunia nyata, niat, atau afiliasi politik seseorang.
-- Mengakses akun privat, melewati kontrol akses, atau mengambil data tanpa izin.
-- Mengirim pesan, melakukan tindakan terhadap akun, atau mengotomatisasi pelaporan akun.
-- Mengandalkan AI sebagai penentu tunggal bahwa akun adalah palsu atau buzzer.
-- Mendukung semua platform sekaligus sebelum akses dan kebutuhan tiap API dipahami.
+- CLI dan HTTP API untuk memulai scan akun/profil atau post/video melalui URL.
+- Deteksi platform dan tipe target dari URL yang didukung.
+- Adapter untuk X, Instagram, TikTok, YouTube, dan Facebook dengan cakupan yang bergantung pada endpoint dan credential.
+- Pengumpulan konten dan komentar yang memang dikembalikan API serta diizinkan oleh token.
+- Indikator lokal yang dapat dijelaskan, termasuk pengulangan teks dan waktu komentar berdekatan jika tersedia data waktu yang memadai.
+- Ringkasan stance komentar secara agregat dan per post menggunakan heuristik lokal atau endpoint AI kompatibel yang diaktifkan secara opsional.
+- Pelaporan jumlah koleksi dan keterbatasan. Penilaian akun interaksi ditandai `not_implemented`.
 
-## Pengguna dan hasil yang diharapkan
+Rincian per provider tersedia di [status fitur dan batasan](./status-fitur.md) serta [setup platform](./setup-platform.md).
 
-Pengguna memasukkan username akun atau URL/ID postingan. Aplikasi mengambil data yang tersedia dari API, mengidentifikasi akun yang berinteraksi, lalu memeriksa akun-akun tersebut sesuai cakupan dan batas yang telah ditetapkan. Hasil harus menyebutkan interaksi mana yang berhasil diperoleh, periode dan kedalaman penelusuran, serta keterbatasan API. Setiap kesimpulan harus dapat ditelusuri ke data dan indikator yang memicunya; pengguna tetap bertanggung jawab menilai konteksnya.
+## Di luar kemampuan saat ini
+
+- Menemukan seluruh komentator, pemberi like, pembagi, atau akun yang berinteraksi.
+- Mengambil dan menganalisis riwayat aktivitas masing-masing akun interaksi.
+- Memberikan skor “fake/buzzer/orang asli” untuk setiap akun.
+- Menetapkan identitas dunia nyata, niat, afiliasi politik, atau hubungan antarindividu.
+- Menjamin cakupan seluruh data, seluruh akun, atau seluruh periode konten.
+- Mengambil data dari akun privat, melewati kontrol akses, atau melakukan scraping untuk menghindari batas API.
+- Melakukan tindakan otomatis terhadap akun, termasuk mengirim pesan, melaporkan, atau menargetkan.
+
+Poin-poin yang mungkin dikembangkan ke depan harus melewati pemeriksaan ketersediaan API, izin, privasi, dan evaluasi. Baca [roadmap](./rencana-kerja.md), yang menjelaskan sasaran dan bukan daftar fitur yang seluruhnya telah selesai.
+
+## Prinsip interpretasi
+
+1. Hasil harus ditautkan dengan data sampel dan metode yang digunakan.
+2. Tidak adanya data atau sinyal bukan bukti bahwa aktivitas tidak terjadi.
+3. Skor agregat bukan probabilitas identitas, niat, atau keaslian.
+4. Sampel kecil, bahasa, sarkasme, tren populer, dan data yang hilang dapat mengubah hasil.
+5. Keputusan berdampak memerlukan konteks dan pemeriksaan manusia; jangan menggunakan hasil sebagai vonis.
+6. Kumpulkan data seminimal mungkin, sesuai izin dan tujuan yang dinyatakan.
+
+Untuk risiko operasional dan mitigasi, lihat [batasan, risiko, dan mitigasi](./batasan-dan-risiko.md).
